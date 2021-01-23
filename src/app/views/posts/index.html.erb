@@ -1,0 +1,33 @@
+<div class="content-width">
+  <h4>スケジュール詳細</h4>
+  <div class="task_table">
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>終日</th>
+        <th>スケジュール更新日時</th>
+        <th>確認</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+      <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.id %></td>
+        <td class="post_center"><%= post.title %></td>
+        <td><%= post.start_day %></td>
+        <td><%= post.finish_day %></td>
+        <td class="post_center"><%= post.all_day %></td>
+        <td><%= post.updated_at %></td>
+        <td><%= link_to("確認", "/posts/#{post.id}") %></td>
+        <td><%= link_to("編集", "/posts/#{post.id}/edit") %></td>
+        <td><%= link_to("削除", "/posts/#{post.id}/destroy", method: :post, data: {confirm: "本当に削除しますか？"}) %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <%= link_to("スケジュール新規登録", "/posts/new") %>
+</div>

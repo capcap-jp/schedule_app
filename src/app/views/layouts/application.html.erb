@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>App</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>Schedule App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <header>
+    <h1>Ruby on Rails スケジュール管理アプリ</h1>
+  </header>
+  <main>
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
     <%= yield %>
-  </body>
+  </main>
+  <footer>
+    <script>
+      //今日の日付データを変数に格納
+      //変数は"today"とする
+      let today = new Date();
+
+      //年・月・日・曜日を取得
+      let year = today.getFullYear();
+      let month = today.getMonth() + 1;
+      let week = today.getDay();
+      let day = today.getDate();
+
+      let week_ja = new Array("日", "月", "火", "水", "木", "金", "土");
+
+      //年・月・日・曜日を書き出す
+      document.write("<h1>" + "現在の日時：" + year + "年" + month + "月" + day + "日 " + week_ja[week] + "曜日" + "</h1>");
+    </script>
+  </footer>
+</body>
+
 </html>
